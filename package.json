@@ -1,0 +1,16 @@
+{
+  "name": "node-basics",
+  "version": "1.0.0",
+  "description": "Basics of Node.js",
+  "main": "index.js",
+  "scripts": {
+    "start": "echo \"Error: no script specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^3.3.0-beta2",
+    "mysql": "^2.17.1"
+  }
+}
