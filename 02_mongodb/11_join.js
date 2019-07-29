@@ -1,9 +1,9 @@
-var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://127.0.0.1:27017/";
+const MongoClient = require('mongodb').MongoClient;
+const url = "mongodb://127.0.0.1:27017/";
 
-MongoClient.connect(url, function (err, db) {
+MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
     if (err) throw err;
-    var dbo = db.db("mydb");
+    const dbo = db.db("node_basics");
     dbo.collection('orders').aggregate([
         {
             $lookup:
@@ -11,7 +11,7 @@ MongoClient.connect(url, function (err, db) {
                 from: 'products',
                 localField: 'product_id',
                 foreignField: '_id',
-                as: 'orderdetails'
+                as: 'order_details'
             }
         }
     ]).toArray(function (err, res) {

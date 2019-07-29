@@ -1,12 +1,14 @@
-var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/";
+const MongoClient = require('mongodb').MongoClient;
+const url = "mongodb://localhost:27017/";
 
-MongoClient.connect(url, function (err, db) {
+MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
     if (err) throw err;
-    var dbo = db.db("mydb");
-    var myobj = { name: "Company Inc", address: "Highway 37" };
-    dbo.collection("customers").insertOne(myobj, function (err, res) {
+    const dbo = db.db("node_basics");
+    const company = { name: "Alpha Company Inc", address: "Highway 37" };
+
+    dbo.collection("customers").insertOne(company, function (err) {
         if (err) throw err;
+        console.log(company);
         console.log("1 document inserted");
         db.close();
     });

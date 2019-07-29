@@ -1,10 +1,10 @@
-var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/";
+const MongoClient = require('mongodb').MongoClient;
+const url = "mongodb://localhost:27017/";
 
-MongoClient.connect(url, function (err, db) {
+MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
     if (err) throw err;
-    var dbo = db.db("mydb");
-    dbo.createCollection("customers", function (err, res) {
+    const dbo = db.db("node_basics");
+    dbo.createCollection("customers", function (err) {
         if (err) throw err;
         console.log("Collection created!");
         db.close();

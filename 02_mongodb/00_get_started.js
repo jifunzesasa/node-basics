@@ -1,3 +1,3 @@
-var mongo = require('mongodb');
+require('mongodb');
 
 

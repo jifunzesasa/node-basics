@@ -1,10 +1,12 @@
-var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/";
+const MongoClient = require('mongodb').MongoClient;
+const url = "mongodb://localhost:27017/";
 
-MongoClient.connect(url, function (err, db) {
+MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
     if (err) throw err;
-    var dbo = db.db("mydb");
-    var query = { address: "Park Lane 38" };
+
+    const dbo = db.db("node_basics");
+    const query = { address: "Alpha" };
+
     dbo.collection("customers").find(query).toArray(function (err, result) {
         if (err) throw err;
         console.log(result);
